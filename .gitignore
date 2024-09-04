@@ -1,0 +1,5 @@
+/venv
+/Nameit.egg-info
+/__pycache__
+dist
+build
