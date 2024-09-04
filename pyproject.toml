@@ -1,0 +1,27 @@
+[project]
+name = "Nameit"
+version = "0.1"
+description = "Generate captions for images using GIT from MSFT"
+readme = "README.md"
+authors = [{name = "Ashvanth.S"}]
+license = {text="Apache-2.0"}
+classifiers = [
+    "Development Status :: 3 - Alpha"
+]
+
+dependencies = [
+    "transformers",
+    "click",
+    "torch",
+    "pillow",
+    "rich"
+]
+
+[project.urls]
+Homepage = "https://github.com/ash-01xor/Nameit"
+
+[project.scripts]
+nameit = "nameit:cli"
+
+[project.optional-dependencies]
+test = ["pytest","pytest-mock"]
