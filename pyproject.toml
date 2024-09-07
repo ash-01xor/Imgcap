@@ -1,5 +1,5 @@
 [project]
-name = "Nameit"
+name = "imgcap"
 version = "0.2"
 description = "Generate captions for images using GIT from MSFT"
 readme = "README.md"
