@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch, MagicMock , call
 from pathlib import Path
 from click.testing import CliRunner
-from nameit import generate_caption, output_caption, cli
+from imgcap import generate_caption, output_caption, cli
 
 @pytest.fixture
 def mock_image():

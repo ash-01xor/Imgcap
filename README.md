@@ -1,17 +1,17 @@
-# Nameit
+# imgcap
 
 
-[![PyPI](https://img.shields.io/pypi/v/name-it].svg)]
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ash01-xor/Nameit/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/imgcap].svg)]
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ash-01xor/Nameit/blob/main/LICENSE)
 
 A CLI to generate captions for images using the [GiT](https://huggingface.co/docs/transformers/en/model_doc/git) model from MSFT
 
 
 ### Install
 
-Install ```nameit``` in your system using:
+Install ```imgcap``` in your system using:
 
- ```pip install nameit```
+ ```pip install imgcap```
 
 The model size is of 707MB and once initially downloaded, it will be stored in the ```~/.cache/huggingface/hub/```.
 
@@ -35,15 +35,15 @@ nameit [OPTIONS] PATHS..
 
 - Generate captions for a single image:
 ```
-nameit ./path/to/image.jpg --output pretty
+imgcap ./path/to/image.jpg --output pretty
 ```
 
 - Generate captions for all images in a directory:
 ```
-nameit ./path/to/directory --recursive --output json
+imgcap ./path/to/directory --recursive --output json
 ```
 
 - Use multiple threads for faster processing:
 ```
-nameit ./images --threads 4
+imgcap ./images --threads 4
 ```

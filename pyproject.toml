@@ -19,10 +19,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ash-01xor/Nameit"
+Homepage = "https://github.com/ash-01xor/Imgcap"
 
 [project.scripts]
-nameit = "nameit:cli"
+imgcap = "imgcap:cli"
 
 [project.optional-dependencies]
 test = ["pytest","pytest-mock"]
