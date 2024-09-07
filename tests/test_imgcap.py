@@ -26,12 +26,12 @@ def test_generate_caption_error():
     assert "Unexpected error: Test error" in result[1]
 
 def test_output_caption(capsys):
-    with patch('nameit.console.print') as mock_print:
+    with patch('imgcap.console.print') as mock_print:
         output_caption("test_image.jpg", "A test caption", "json", True, True)
     mock_print.assert_called_once_with('[{"path": "test_image.jpg", "caption": "A test caption"}]')
 
-@patch('nameit.pipeline')
-@patch('nameit.Image.open')
+@patch('imgcap.pipeline')
+@patch('imgcap.Image.open')
 def test_cli(mock_image_open, mock_pipeline, tmp_path):
     mock_pipeline.return_value = MagicMock(return_value=[{"generated_text": "A test caption"}])
     
@@ -40,7 +40,7 @@ def test_cli(mock_image_open, mock_pipeline, tmp_path):
     test_image.touch()
     
     runner = CliRunner()
-    with patch('nameit.console.print') as mock_print:
+    with patch('imgcap.console.print') as mock_print:
         result = runner.invoke(cli, [str(test_image), '--output', 'json'])
     
     assert result.exit_code == 0
@@ -49,7 +49,7 @@ def test_cli(mock_image_open, mock_pipeline, tmp_path):
         call('\n[bold green]Processed 1 images successfully![/bold green]')
     ], any_order=True)
 
-@patch('nameit.pipeline')
+@patch('imgcap.pipeline')
 def test_cli_recursive(mock_pipeline, tmp_path):
    
     (tmp_path / "subdir").mkdir()
@@ -59,7 +59,7 @@ def test_cli_recursive(mock_pipeline, tmp_path):
     mock_pipeline.return_value = MagicMock(return_value=[{"generated_text": "A test caption"}])
     
     runner = CliRunner()
-    with patch('nameit.console.print') as mock_print:
+    with patch('imgcap.console.print') as mock_print:
         result = runner.invoke(cli, [str(tmp_path), '--recursive', '--output', 'json'])
     
     assert result.exit_code == 0
