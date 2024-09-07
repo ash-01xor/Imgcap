@@ -3,12 +3,10 @@ import json
 from pathlib import Path
 from PIL import UnidentifiedImageError, Image
 from transformers import pipeline
-
-from typing import List, Tuple
+from typing import List
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import Progress
-from rich import print as rprint
 import concurrent.futures
 
 console = Console()
@@ -28,8 +26,6 @@ def output_caption(path: str, caption: str, output_format: str, is_first: bool, 
         prefix = "[" if is_first else " "
         suffix = "," if not is_last else "]"
         console.print(prefix + json.dumps({"path": path, "caption": caption}) + suffix)
-    elif output_format == 'csv':
-        console.print(f'"{path}","{caption}"')
     else:
         panel = Panel(f"[bold]{Path(path).name}[/bold]\n\n{caption}", expand=False, border_style="cyan")
         console.print(panel)
@@ -41,13 +37,13 @@ def output_caption(path: str, caption: str, output_format: str, is_first: bool, 
     nargs=-1,
     required=True,
 )
-@click.option("--output", type=click.Choice(['pretty', 'json', 'csv']), default='pretty', help="Output format")
+@click.option("--output", type=click.Choice(['pretty', 'json']), default='pretty', help="Output format")
 @click.option("--model", default="microsoft/git-base", help="Uses MSFT GIT-Base model for captioning of images")
 @click.option("--max-tokens", default=50, help="Maximum number of tokens for the caption")
 @click.option("--recursive", is_flag=True, help="Recursively process directories")
 @click.option("--threads", default=1, help="Number of threads to use for processing")
 def cli(paths: List[str], output: str, model: str, max_tokens: int, recursive: bool, threads: int):
-    caption_model = pipeline("image-to-text", model=model,device=0)
+    caption_model = pipeline("image-to-text", model=model, device=0)
     
     all_image_paths = []
     for path in paths:
@@ -61,9 +57,6 @@ def cli(paths: List[str], output: str, model: str, max_tokens: int, recursive: b
             all_image_paths.append(str(p))
     
     total_images = len(all_image_paths)
-    
-    if output == 'csv':
-        console.print('"path","caption"')
     
     with Progress() as progress:
         task = progress.add_task("[cyan]Processing images...", total=total_images)
