@@ -1,8 +1,8 @@
 # imgcap
 
 
-[![PyPI](https://img.shields.io/pypi/v/imgcap].svg)]
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ash-01xor/Nameit/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/imgcap.svg)](https://pypi.org/project/imgcap/)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ash-01xor/imgcap/blob/main/LICENSE)
 
 A CLI to generate captions for images using the [GiT](https://huggingface.co/docs/transformers/en/model_doc/git) model from MSFT
 
