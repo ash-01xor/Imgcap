@@ -2,11 +2,15 @@ import click
 import json
 from pathlib import Path
 from PIL import UnidentifiedImageError, Image
-from transformers import pipeline
+
 from typing import List
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import Progress
+
+import torch
+from transformers import pipeline
+
 import concurrent.futures
 
 console = Console()
@@ -43,7 +47,8 @@ def output_caption(path: str, caption: str, output_format: str, is_first: bool, 
 @click.option("--recursive", is_flag=True, help="Recursively process directories")
 @click.option("--threads", default=1, help="Number of threads to use for processing")
 def cli(paths: List[str], output: str, model: str, max_tokens: int, recursive: bool, threads: int):
-    caption_model = pipeline("image-to-text", model=model, device=0)
+    device = 0 if torch.cuda.is_available() else -1
+    caption_model = pipeline("image-to-text", model=model, device=device)
     
     all_image_paths = []
     for path in paths:
