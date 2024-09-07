@@ -14,7 +14,8 @@ dependencies = [
     "click",
     "torch",
     "pillow",
-    "rich"
+    "rich",
+    "pytest"
 ]
 
 [project.urls]
