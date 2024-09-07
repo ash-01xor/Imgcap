@@ -9,7 +9,8 @@ A CLI to generate captions for images using the [GiT](https://huggingface.co/doc
 
 ### Install
 
-Install ```nameit``` in your system using ```pip```:
+Install ```nameit``` in your system using:
+ ```pip install nameit```:
 
 The model size is of 707MB and once initially downloaded, it will be stored in the ```~/.cache/huggingface/hub/```.
 
