@@ -20,7 +20,7 @@ The model size is of 707MB and once initially downloaded, it will be stored in t
 Run the CLI tool as follows
 
 ```
-nameit [OPTIONS] PATHS.. 
+imgcap [OPTIONS] PATHS.. 
 ```
 
 #### Options
