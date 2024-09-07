@@ -1,5 +1,23 @@
-/venv
-/Nameit.egg-info
-/__pycache__
-dist
-build
+# Virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+
+# Bytecode and log files
+*.log
+*.pyo
+*.pyc
+
+# Temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
